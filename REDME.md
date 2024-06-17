@@ -1,4 +1,3 @@
-> [!NOTE]
 ## Как запустить
 - Установить в свой браузер расширение [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag?hl=be)
 - Для того, чтобы **Hamset Kombat** открывался в браузере установите [этот скрипт](https://github.com/)
