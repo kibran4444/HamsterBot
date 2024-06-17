@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        *://*.hamsterkombat.io/*
 // @version      1.0
-// @description  Хомяк
+// @description  Тапалка для Хомяка
 // @grant        none
 // @icon         
 // @downloadURL
