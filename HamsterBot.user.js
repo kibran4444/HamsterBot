@@ -2,7 +2,7 @@
 // @name         Hamster Bot
 // @namespace    Violentmonkey Scripts
 // @match        *://*.hamsterkombat.io/*
-// @version      1.5
+// @version      1.6
 // @description  Тапалка для Хомяка
 // @grant        none
 // @icon
@@ -161,11 +161,11 @@
 
 
 
-            const buttonBoost = document.querySelector('.boost-item');
-        if (buttonBooster) {
-        buttonBooster.onclick();
-            console.log(`${logPrefix}Нажата кнопка ${buttonBooster[0]}`, styles.success);
-           }
+         //   const buttonBoost = document.querySelector('.boost-item');
+       // if (buttonBooster) {
+       // buttonBooster.onclick();
+           // console.log(`${logPrefix}Нажата кнопка ${buttonBooster[0]}`, styles.success);
+          // }
 
 
             // Установка задержки перед следующей проверкой энергии
