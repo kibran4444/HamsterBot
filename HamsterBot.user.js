@@ -6,8 +6,8 @@
 // @description  Тапалка для Хомяка
 // @grant        none
 // @icon
-// @downloadURL  https://github.com/kibran4444/HamsterBot/blob/raw/HamsterBot.user.js
-// @updateURL    https://github.com/kibran4444/HamsterBot/blob/raw/HamsterBot.user.js
+// @downloadURL  https://github.com/kibran4444/HamsterBot/raw/HamsterBot.user.js
+// @updateURL    https://github.com/kibran4444/HamsterBot/raw/HamsterBot.user.js
 // @homepage
 // ==/UserScript==
 
