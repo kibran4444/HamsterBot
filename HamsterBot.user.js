@@ -2,7 +2,7 @@
 // @name         Hamster Bot
 // @namespace    Violentmonkey Scripts
 // @match        *://*.hamsterkombat.io/*
-// @version      1.1
+// @version      1.5
 // @description  Тапалка для Хомяка
 // @grant        none
 // @icon
