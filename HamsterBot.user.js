@@ -154,7 +154,7 @@
             console.log(`${logPrefix}Восстановление энергии в течении: ${delayInSeconds} сек.`, styles.info);
 
 
-           // document.querySelector('.user-tap-boost').click();
+            document.querySelector('.user-tap-boost').click();
 
 
 
