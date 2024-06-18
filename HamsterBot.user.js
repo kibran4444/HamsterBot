@@ -3,9 +3,9 @@
 // @namespace    Violentmonkey Scripts
 // @match        *://*.hamsterkombat.io/*
 // @version      1.0
-// @description  Хомяк
+// @description  Тапалка для Хомяка
 // @grant        none
-// @icon         https://hamsterkombat.io/images/icons/hamster-coin.png
+// @icon
 // @downloadURL
 // @updateURL
 // @homepage
@@ -22,15 +22,15 @@
     const logPrefix = '%c[HamsterBot] ';
 
     // Перезапись функции console.log для добавления префикса и стилей
-   // const originalLog = console.log;
-   // console.log = function () {
-    //    if (typeof arguments[0] === 'string' && arguments[0].includes('[HamsterBot]')) {
-     //       originalLog.apply(console, arguments);
-    //   }
-   // };
+    const originalLog = console.log;
+    console.log = function () {
+        if (typeof arguments[0] === 'string' && arguments[0].includes('[HamsterBot]')) {
+            originalLog.apply(console, arguments);
+       }
+    };
 
-     //Отключение остальных методов консоли для чистоты вывода
-     //console.error = console.warn = console.info = console.debug = () => { };
+   //  Отключение остальных методов консоли для чистоты вывода
+    console.error = console.warn = console.info = console.debug = () => { };
 
     // Очистка консоли и стартовые сообщения
     console.clear();
@@ -40,11 +40,11 @@
 
     // Настройки скрипта
     const settings = {
-        minEnergy: 25, // Минимальная энергия
-        minInterval: 30, // Минимальный интервал между тапами
-        maxInterval: 100, // Максимальный интервал между тапами
-        minEnergyRefillDelay: 60000, // Минимальная задержка для пополнения энергии (60 секунд)
-        maxEnergyRefillDelay: 200000, // Максимальная задержка для пополнения энергии (200 секунд)
+        minEnergy: 25, // Минимальная энергия, необходимая для нажатия на монету
+        minInterval: 30, // Минимальный интервал между кликами в миллисекундах
+        maxInterval: 100, // Максимальный интервал между кликами в миллисекундах
+        minEnergyRefillDelay: 60000, // Минимальная задержка в миллисекундах для пополнения энергии (60 секунд)
+        maxEnergyRefillDelay: 200000, // Максимальная задержка в миллисекундах для пополнения энергии (180 секунд)
         maxRetries: 10 // Максимальное количество попыток перед перезагрузкой страницы
     };
 
@@ -72,32 +72,36 @@
         const energyElement = document.getElementsByClassName("user-tap-energy")[0];
         const buttonElement = document.getElementsByClassName('user-tap-button')[0];
 
-   if (!energyElement || !buttonElement) {
+
+
+     // const img = document.getElementByClassName("is-hamster-image is-level-8");
+     // console.log(`${logPrefix}  ${img}`, styles.info);
+   // var myFunction = function() {
+       // img.srcset="/images/hamsters/10.avif";
+//}
+
+
+
+
+        if (!energyElement || !buttonElement) {
             // Элемент не найден, попытка перезапустить скрипт
             console.log(`${logPrefix}Элемент не найден,обновление...`, styles.error);
 
           const buttonBooster = document.querySelector('.boost-item');
           const boostCountdown = document.querySelector('.boost-countdown');
           const buttonClose = document.querySelector('.btn-icon.popup-close');
-
+          console.log('buttonClose');
             console.log(boostCountdown);
           if (buttonBooster){
           buttonBooster.click();
-         // }else if (boostCountdown){
-          //  console.log('---');
-          //  const buttonClose = document.querySelector('.btn-icon.popup-close');
-          //  console.log('-------');
+          }else if (boostCountdown){
+            console.log('---');
+            const buttonClose = document.querySelector('.btn-icon.popup-close');
+            console.log('-------');
           }
 
 
             retryCount++;
-
-          const buttonBoost = document.querySelector('.boost-item');
-          console.log('boost-item');
-        if (buttonBooster) {
-           buttonBooster.onclick();
-            console.log(`${logPrefix}Нажата кнопка ${buttonBooster[0]}`, styles.success);
-          }
 
 
            const buttonSheet = document.querySelector('.bottom-sheet-button.button.button-primary.button-large');
@@ -110,7 +114,7 @@
                 console.log(`${logPrefix}Max retries reached, reloading page...`, styles.error);
                 location.reload();
             } else {
-                // Задержка 2 секунды перед следующей попыткой
+                // Добавляем задержку в 2 секунды перед следующей попыткой
                 setTimeout(() => {
                     setTimeout(performRandomClick, getRandomNumber(settings.minInterval, settings.maxInterval));
                 }, 2000);
@@ -118,11 +122,11 @@
             return;
         }
 
-        retryCount = 0; // Сбросить счетчик попыток при  обнаружении элементов
+        retryCount = 0; // Сбросить счетчик попыток при успешном обнаружении элементов
 
         const energy = parseInt(energyElement.getElementsByTagName("p")[0].textContent.split(" / ")[0]);
 
-            // Генерация случайных координат
+            // Генерация случайных координат, с учетом местоположения и размера кнопки
             let { top, left } = getElementPosition(buttonElement);
 
             const randomX = Math.floor(left + Math.random() * buttonElement.offsetWidth);
@@ -142,7 +146,7 @@
 
            // console.log(`${logPrefix}Button clicked at (${randomX}, ${randomY})`, styles.success);
         } else {
-            // Вывод сообщения о недостаточном уровне энергии
+            // Вывод сообщения о недостаточном уровне энергии в консоль
             console.log(`Недостаточно энергии, скрипт остановлен для пополнения энергии.`, styles.info);
 
 
@@ -154,21 +158,19 @@
             // Вывод информации о времени до следующего запуска в консоль
             console.log(`${logPrefix}Восстановление энергии в течении: ${delayInSeconds} сек.`, styles.info);
 
-            //Нажатие кнопки "Boost"
-            document.querySelector('.user-tap-boost').click();
-           const buttonBoost = document.querySelector('.boost-item');
-          console.log('buttonBooster');
-        if (buttonBooster) {
-           buttonBooster.onclick();
-            console.log(`${logPrefix}Нажата кнопка ${buttonBooster[0]}`, styles.success);
-          }
+
+           // document.querySelector('.user-tap-boost').click();
 
 
 
 
 
 
-
+            //const buttonBoost = document.querySelector('.boost-item');
+       // if (buttonBooster) {
+           //buttonBooster.onclick();
+           // console.log(`${logPrefix}Нажата кнопка ${buttonBooster[0]}`, styles.success);
+          // }
 
 
             // Установка задержки перед следующей проверкой энергии
