@@ -161,7 +161,11 @@
 
 
 
-         
+         //   const buttonBoost = document.querySelector('.boost-item');
+       // if (buttonBooster) {
+       // buttonBooster.onclick();
+           // console.log(`${logPrefix}Нажата кнопка ${buttonBooster[0]}`, styles.success);
+          // }
 
 
             // Установка задержки перед следующей проверкой энергии
