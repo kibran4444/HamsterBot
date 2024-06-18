@@ -155,20 +155,7 @@
 
 
             document.querySelector('.user-tap-boost').click();
-
-
-
-
-
-
-         //   const buttonBoost = document.querySelector('.boost-item');
-       // if (buttonBooster) {
-       // buttonBooster.onclick();
-           // console.log(`${logPrefix}Нажата кнопка ${buttonBooster[0]}`, styles.success);
-          // }
-
-
-            // Установка задержки перед следующей проверкой энергии
+// Установка задержки перед следующей проверкой энергии
             setTimeout(performRandomClick, randomEnergyRefillDelay);
             return;
         }
