@@ -6,8 +6,8 @@
 // @description  Тапалка для Хомяка
 // @grant        none
 // @icon
-// @downloadURL
-// @updateURL
+// @downloadURL  https://github.com/kibran4444/HamsterBot/blob/raw/HamsterBot.user.js
+// @updateURL    https://github.com/kibran4444/HamsterBot/blob/raw/HamsterBot.user.js
 // @homepage
 // ==/UserScript==
 
@@ -74,11 +74,6 @@
 
 
 
-     // const img = document.getElementByClassName("is-hamster-image is-level-8");
-     // console.log(`${logPrefix}  ${img}`, styles.info);
-   // var myFunction = function() {
-       // img.srcset="/images/hamsters/10.avif";
-//}
 
 
 
@@ -144,7 +139,7 @@
 
 
 
-           // console.log(`${logPrefix}Button clicked at (${randomX}, ${randomY})`, styles.success);
+           /
         } else {
             // Вывод сообщения о недостаточном уровне энергии в консоль
             console.log(`Недостаточно энергии, скрипт остановлен для пополнения энергии.`, styles.info);
