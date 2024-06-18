@@ -3,9 +3,9 @@
 // @namespace    Violentmonkey Scripts
 // @match        *://*.hamsterkombat.io/*
 // @version      1.0
-// @description  Тапалка для Хомяка
+// @description  Хомяк
 // @grant        none
-// @icon         
+// @icon         https://hamsterkombat.io/images/icons/hamster-coin.png
 // @downloadURL
 // @updateURL
 // @homepage
@@ -21,7 +21,7 @@
     };
     const logPrefix = '%c[HamsterBot] ';
 
-     Перезапись функции console.log для добавления префикса и стилей
+    // Перезапись функции console.log для добавления префикса и стилей
     const originalLog = console.log;
     console.log = function () {
         if (typeof arguments[0] === 'string' && arguments[0].includes('[HamsterBot]')) {
@@ -29,8 +29,8 @@
        }
     };
 
-     Отключение остальных методов консоли для чистоты вывода
-    console.error = console.warn = console.info = console.debug = () => { };
+     //Отключение остальных методов консоли для чистоты вывода
+     console.error = console.warn = console.info = console.debug = () => { };
 
     // Очистка консоли и стартовые сообщения
     console.clear();
