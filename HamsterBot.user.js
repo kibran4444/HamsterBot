@@ -12,7 +12,7 @@
 // ==/UserScript==
 
 (function () {
-    // Конфигурация стилей для логов
+// Конфигурация стилей для логов
     const styles = {
         success: 'background: #28a745; color: #ffffff; font-weight: bold; padding: 4px 8px; border-radius: 4px;',
         starting: 'background: #8640ff; color: #ffffff; font-weight: bold; padding: 4px 8px; border-radius: 4px;',
@@ -21,15 +21,15 @@
     };
     const logPrefix = '%c[HamsterBot] ';
 
-    // Перезапись функции console.log для добавления префикса и стилей
-    const originalLog = console.log;
-    console.log = function () {
-        if (typeof arguments[0] === 'string' && arguments[0].includes('[HamsterBot]')) {
-            originalLog.apply(console, arguments);
-       }
-    };
+//Перезапись функции console.log для добавления префикса и стилей
+   // const originalLog = console.log;
+    //console.log = function () {
+        //if (typeof arguments[0] === 'string' && arguments[0].includes('[HamsterBot]')) {
+          //  originalLog.apply(console, arguments);
+      // }
+   // };
 
-   //  Отключение остальных методов консоли для чистоты вывода
+//  Отключение остальных методов консоли для чистоты вывода
     console.error = console.warn = console.info = console.debug = () => { };
 
     // Очистка консоли и стартовые сообщения
@@ -74,6 +74,11 @@
 
 
 
+     // const img = document.getElementByClassName("is-hamster-image is-level-8");
+     // console.log(`${logPrefix}  ${img}`, styles.info);
+   // var myFunction = function() {
+       // img.srcset="/images/hamsters/10.avif";
+//}
 
 
 
@@ -139,12 +144,56 @@
 
 
 
-           /
+           // console.log(`${logPrefix}Button clicked at (${randomX}, ${randomY})`, styles.success);
         } else {
             // Вывод сообщения о недостаточном уровне энергии в консоль
             console.log(`Недостаточно энергии, скрипт остановлен для пополнения энергии.`, styles.info);
 
 
+         const buttonBarItem = document.getElementsByClassName('app-bar-item no-select')[1];
+        console.log(buttonBarItem);
+          buttonBarItem.click();
+
+            function getUpgradeItem(k){
+             // if (k < 4){
+                k++;
+               setTimeout(() => {for (let i = 0; i < 100; i++){
+
+                  let upgradeItemDisabled;
+                  let upgradeItemPrice;
+                  let upgradeItemError
+                  let upgradeItem = document.getElementsByClassName('upgrade-item')[i];
+
+              if(upgradeItem){
+
+              //  if(!upgradeItemPrice){let upgradeItemPrice = 'Нужны друзья !!!'};
+                let upgradeItemName = upgradeItem.children[0].children[1].children[0].innerText;
+                let upgradeItemProfit = upgradeItem.children[0].children[1].children[1].children[1].children[0].children[1].innerHTML;
+                if(upgradeItem.classList[1]){
+                  upgradeItemDisabled = 'Заблокировано';
+                  upgradeItemError = upgradeItem.children[1].children[2].children[0].innerText;
+                  console.log(`${logPrefix} ${upgradeItemName} : ${upgradeItemError} : ${upgradeItemProfit} : ${upgradeItemDisabled}`, styles.error);
+                }else{
+                  upgradeItemDisabled = 'Разблокировано';
+                  upgradeItemPrice = upgradeItem.children[1].children[2].firstChild.children[1].firstChild.data;
+                  console.log(`${logPrefix} ${upgradeItemName} : ${upgradeItemPrice} : ${upgradeItemProfit} : ${upgradeItemDisabled}`, styles.starting);
+                };
+
+
+
+              } else {
+
+                let tabsItem = document.getElementsByClassName('tabs-item')[k];
+                tabsItem.click();
+               // getUpgradeItem(k);
+                };
+               }},100);
+             // }else{
+              //  break
+             // };
+
+          };
+setTimeout(() => {getUpgradeItem(0)},1000);
 
             // Генерация случайного значения задержки для пополнения энергии
             const randomEnergyRefillDelay = getRandomNumber(settings.minEnergyRefillDelay, settings.maxEnergyRefillDelay);
@@ -154,8 +203,21 @@
             console.log(`${logPrefix}Восстановление энергии в течении: ${delayInSeconds} сек.`, styles.info);
 
 
-            document.querySelector('.user-tap-boost').click();
-// Установка задержки перед следующей проверкой энергии
+           // document.querySelector('.user-tap-boost').click();
+
+
+
+
+
+
+            //const buttonBoost = document.querySelector('.boost-item');
+       // if (buttonBooster) {
+           //buttonBooster.onclick();
+           // console.log(`${logPrefix}Нажата кнопка ${buttonBooster[0]}`, styles.success);
+          // }
+
+
+            // Установка задержки перед следующей проверкой энергии
             setTimeout(performRandomClick, randomEnergyRefillDelay);
             return;
         }
