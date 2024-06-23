@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         TapSwap Autoclicker
+// @name         TapSwap Bot
 // @namespace    Violentmonkey Scripts
 // @match        *://*.tapswap.club/*
-// @author       mudachyo
-// @version      1.1
-// @description  12.06.2024, 17:09:30
+// @author      
+// @version      1.0
+// @description  0
 // @grant        none
-// @icon         https://www.softportal.com/en/scr/1089/icons/icon_src.png
+// @icon         
 // @downloadURL  
 // @updateURL
 // @homepage
