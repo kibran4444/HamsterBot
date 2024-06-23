@@ -8,6 +8,7 @@
 // @icon
 // @downloadURL  https://github.com/kibran4444/HamsterBot/raw/main/HamsterBot.user.js
 // @updateURL    https://github.com/kibran4444/HamsterBot/raw/main/HamsterBot.user.js
+// @require      https://code.jquery.com/jquery-3.7.1.js
 // @homepage
 // ==/UserScript==
 
@@ -30,7 +31,7 @@
    // };
 
 //  Отключение остальных методов консоли для чистоты вывода
-    console.error = console.warn = console.info = console.debug = () => { };
+    //console.error = console.warn = console.info = console.debug = () => { };
 
     // Очистка консоли и стартовые сообщения
     console.clear();
@@ -80,7 +81,29 @@
        // img.srcset="/images/hamsters/10.avif";
 //}
 
+         const requestURL = 'http://localhost/hamster.php'
 
+$.ajax({
+           type:"POST",
+            url:'http://localhost/hamster.php',
+            data: {
+              'name': 123255555552,
+              'abc': 234
+            }
+       });
+
+//sendRequest('GET', requestURL)
+ //.then(data => console.log(data));
+ //.catch(err => console.log(err));
+
+const body = {
+  name: 'Vladilen',
+  age: 26
+};
+
+sendRequest('POST', requestURL, body)
+  .then(data => console.log(data));
+  //.catch(err => console.log(err));
 
 
         if (!energyElement || !buttonElement) {
