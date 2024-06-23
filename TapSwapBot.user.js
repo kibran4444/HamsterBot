@@ -1,15 +1,15 @@
 // ==UserScript==
-// @name         TapSwapBot
+// @name         TapSwap Autoclicker
 // @namespace    Violentmonkey Scripts
-// @match        
+// @match        *://*.tapswap.club/*
 // @author       mudachyo
-// @version      1.0
-// @description  
+// @version      1.1
+// @description  12.06.2024, 17:09:30
 // @grant        none
 // @icon         https://www.softportal.com/en/scr/1089/icons/icon_src.png
-// @downloadURL https://github.com/kibran4444/HamsterBot/blob/raw/TapSwapWeb.user.js
-// @updateURL    https://github.com/kibran4444/HamsterBot/blob/raw/TapSwapWeb.user.js
-// @homepage     
+// @downloadURL  
+// @updateURL
+// @homepage
 // ==/UserScript==
 
 // Настраиваемые значения
