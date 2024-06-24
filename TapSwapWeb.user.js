@@ -7,8 +7,8 @@
 // @match        *://app.tapswap.club/*
 // @grant        none
 // @icon         
-// @downloadURL  https://github.com/mudachyo/TapSwap/raw/main/tapswap-web.user.js
-// @updateURL    https://github.com/mudachyo/TapSwap/raw/main/tapswap-web.user.js
+// @downloadURL  https://github.com/kibran4444/HamsterBot/raw/main/TapSwapWeb.user.js
+// @updateURL   https://github.com/kibran4444/HamsterBot/raw/main/TapSwapWeb.user.js
 // @homepage     
 // ==/UserScript==
 
