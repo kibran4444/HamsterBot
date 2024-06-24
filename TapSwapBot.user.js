@@ -7,8 +7,8 @@
 // @description  0
 // @grant        none
 // @icon         
-// @downloadURL  
-// @updateURL
+// @downloadURL  https://github.com/kibran4444/HamsterBot/raw/main/TapSwapBot.user.js
+// @updateURL    https://github.com/kibran4444/HamsterBot/raw/main/TapSwapBot.user.js
 // @homepage
 // ==/UserScript==
 
@@ -18,12 +18,12 @@ const maxClickDelay = 200; // Максимальная задержка межд
 const pauseMinTime = 100000; // Минимальная пауза в миллисекундах (100 секунд)
 const pauseMaxTime = 300000; // Максимальная пауза в миллисекундах (300 секунд)
 const energyThreshold = 2; // Порог энергии, ниже которого делается пауза
-const checkInterval = 3000; // Интервал проверки наличия монеты в миллисекундах (3 секунды)
-const maxCheckAttempts = 5; // Максимальное количество попыток проверки наличия монеты
+const checkInterval = 5000; // Интервал проверки наличия монеты в миллисекундах (3 секунды)
+const maxCheckAttempts = 10; // Максимальное количество попыток проверки наличия монеты
 
-let checkAttempts = 0; // Счётчик попыток проверки
+let checkAttempts = 0; // Счётчик 
 
-// Конфигурация стилей для логов
+// Сстили
 const styles = {
     success: 'background: #28a745; color: #ffffff; font-weight: bold; padding: 4px 8px; border-radius: 4px;',
     starting: 'background: #8640ff; color: #ffffff; font-weight: bold; padding: 4px 8px; border-radius: 4px;',
@@ -32,7 +32,7 @@ const styles = {
 };
 const logPrefix = '%c[TapSwapBot] ';
 
-// Перезапись функции console.log для добавления префикса и стилей
+
 const originalLog = console.log;
 console.log = function () {
     if (typeof arguments[0] === 'string' && arguments[0].includes('[TapSwapBot]')) {
@@ -40,10 +40,10 @@ console.log = function () {
     }
 };
 
-// Отключение остальных методов консоли для чистоты вывода
+
 console.error = console.warn = console.info = console.debug = () => { };
 
-// Очистка консоли и стартовые сообщения
+
 console.clear();
 console.log(`${logPrefix}Starting`, styles.starting);
 console.log(`${logPrefix}Created by https://t.me/mudachyo`, styles.starting);
@@ -59,7 +59,7 @@ function getRandomCoordinateInCircle(radius) {
     do {
         x = Math.random() * 2 - 1;
         y = Math.random() * 2 - 1;
-    } while (x * x + y * y > 1); // Проверяем, что точка находится внутри круга
+    } while (x * x + y * y > 1); 
     return {
         x: Math.round(x * radius),
         y: Math.round(y * radius)
@@ -78,15 +78,15 @@ function checkCoinAndClick() {
     const button = document.querySelector("#ex1-layer img");
 
     if (button) {
-        console.log(`${logPrefix}Coin found. The click is executed.`, styles.success);
+        console.log(`${logPrefix}Монета найдена`, styles.success);
         clickButton();
     } else {
         checkAttempts++;
         if (checkAttempts >= maxCheckAttempts) {
-            console.log(`${logPrefix}Coin not found after 3 attempts. Reloading the page.`, styles.error);
+            console.log(`${logPrefix}Монета не найдена.`, styles.error);
             location.reload();
         } else {
-            console.log(`${logPrefix}Coin not found. Attempt  ${checkAttempts}/${maxCheckAttempts}. Check again after 3 seconds.`, styles.error);
+            console.log(`${logPrefix}Монета не найдена  ${checkAttempts}/${maxCheckAttempts}. Check again after 3 seconds.`, styles.error);
             setTimeout(checkCoinAndClick, checkInterval);
         }
     }
@@ -96,7 +96,7 @@ function clickButton() {
     const currentEnergy = getCurrentEnergy();
     if (currentEnergy !== null && currentEnergy < energyThreshold) {
         const pauseTime = pauseMinTime + Math.random() * (pauseMaxTime - pauseMinTime);
-        console.log(`${logPrefix}The energy is lower ${energyThreshold}. Pause for ${Math.round(pauseTime / 1000)} seconds.`, styles.info);
+        console.log(`${logPrefix}Мало энергии ${energyThreshold}. Пауза на ${Math.round(pauseTime / 1000)} сек.`, styles.info);
         setTimeout(clickButton, pauseTime);
         return;
     }
@@ -131,14 +131,14 @@ function clickButton() {
             buttons: 1
         };
 
-        // Trigger events
+        
         triggerEvent(button, 'pointerdown', commonProperties);
         triggerEvent(button, 'mousedown', commonProperties);
         triggerEvent(button, 'pointerup', { ...commonProperties, pressure: 0 });
         triggerEvent(button, 'mouseup', commonProperties);
         triggerEvent(button, 'click', commonProperties);
 
-        // Schedule the next click with a random delay
+        
         const delay = minClickDelay + Math.random() * (maxClickDelay - minClickDelay);
         setTimeout(checkCoinAndClick, delay);
     } else {
@@ -146,5 +146,5 @@ function clickButton() {
     }
 }
 
-// Start the first check
+
 checkCoinAndClick();
