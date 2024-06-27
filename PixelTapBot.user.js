@@ -7,8 +7,8 @@
 // @match        *://sexyzbot.pxlvrs.io/*
 // @homepage     https://github.com/kibran4444/PixelTap
 // @icon         https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ8fIh36hOYyMEv7XiDsX0EMOP2MC18Trptg&s
-// @downloadURL  https://github.com/kibran4444/PixelTap/raw/main/pixeltap-autoclicker.user.js
-// @updateURL    https://github.com/kibran4444/PixelTap/raw/main/pixeltap-autoclicker.user.js
+// @downloadURL  https://github.com/kibran4444/PixelTap/raw/main/PixelTapBot.user.js
+// @updateURL    https://github.com/kibran4444/PixelTap/raw/main/PixelTapBot.user.js
 // ==/UserScript==
 
 
